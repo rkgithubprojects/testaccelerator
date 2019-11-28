@@ -1,0 +1,1 @@
+This folder contains build artifacts(war file)
