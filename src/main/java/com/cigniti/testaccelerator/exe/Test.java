@@ -18,8 +18,6 @@ public class Test {
 			 * new FileOutputStream(testCaseFile); Sheet tcOutsheet =
 			 * tcWorkbook.createSheet(sheetName);
 			 *
-			 * 
-			 *
 			 *
 			 *
 			 * Row row = tcOutsheet.createRow(0); Cell cell = row.createCell(0);
