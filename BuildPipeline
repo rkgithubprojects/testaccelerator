@@ -1,0 +1,26 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Pull code') {
+         steps {
+            git changelog: false, credentialsId: '66e063a3-7d19-44a0-a9b2-b762be09848e', poll: false, url: 'https://github.com/rkgithubprojects/testaccelerator.git'
+         }
+         
+      }
+       stage('Build maven') {
+        steps {
+            bat label: '', script: 'mvn clean install'
+         
+         }
+         
+      }
+      
+      stage('send email'){
+steps{
+emailext body: 'build job completed successfully', subject: 'build successfuly', to: 'shravyay14cs861@gmail.com'
+}
+}
+
+   }
+}
