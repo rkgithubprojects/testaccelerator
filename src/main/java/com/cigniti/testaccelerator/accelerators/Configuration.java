@@ -15,6 +15,7 @@ public class Configuration extends UtilitiesClass {
 		boolean result=false;
 		try
 		{
+		        
 			moduleData.put("moduleName", moduleName);
 			moduleData.put("modulePath", modulePath);
 			moduleData.put("generateTC", generateTC+"");
