@@ -1,0 +1,58 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Pull code') {
+         steps {
+            git changelog: false, credentialsId: 'cc3e65fd-5568-48fc-a0af-f73c5ab96b87', poll: false, url: 'https://github.com/rkgithubprojects/testaccelerator.git'
+         }
+         
+      }
+       stage('Build & Package') {
+        steps {
+            bat label: '', script: 'mvn package'
+         
+         }
+         
+      }
+	  stage('SonarQube Scan') 
+			{							
+				steps {
+				  
+				   
+					script{
+						def scannerHome = tool 'SonarQube-8.4.1';
+						withSonarQubeEnv{
+						   bat "${scannerHome}/bin/sonar-scanner "+
+							"-Dsonar.projectKey=TestAccelerator "+
+							"-Dsonar.projectName=TestAccelerator "+
+							"-Dsonar.projectVersion=${BUILD_NUMBER} "+
+							"-Dsonar.sources=$workspace/src/main/ "+
+							"-Dsonar.java.binaries=$workspace/src/main/"
+						}
+					}					
+				}					
+			}    
+			
+		stage('Run UnitTests') {
+        steps {
+           echo "Running Unit Tests"
+         
+         }
+        stage('Upload Artifacts') {
+        steps {
+           echo "Uploaded Artifacts"
+         
+         }  
+		 
+		 stage('Deploy Application') {
+        steps {
+           echo "Application Deployed"
+         
+         }  
+      }	
+     
+}
+
+   
+}
