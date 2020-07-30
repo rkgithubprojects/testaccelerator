@@ -39,12 +39,13 @@ pipeline {
            echo "Running Unit Tests"
          
          }
+		 }
         stage('Upload Artifacts') {
         steps {
            echo "Uploaded Artifacts"
          
          }  
-		 
+		 }
 		 stage('Deploy Application') {
         steps {
            echo "Application Deployed"
