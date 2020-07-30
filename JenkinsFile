@@ -27,8 +27,8 @@ pipeline {
 							"-Dsonar.projectKey=TestAccelerator "+
 							"-Dsonar.projectName=TestAccelerator "+
 							"-Dsonar.projectVersion=${BUILD_NUMBER} "+
-							"-Dsonar.sources=$workspace/src/main/ "+
-							"-Dsonar.java.binaries=$workspace/src/main/"
+							"-Dsonar.sources=src/main/ "+
+							"-Dsonar.java.binaries=src/main/"
 						}
 					}					
 				}					
