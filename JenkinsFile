@@ -22,7 +22,7 @@ pipeline {
 				  
 				   
 					script{
-						def scannerHome = tool 'SonarQube-4.3.0';
+						def scannerHome = tool 'sonarqube';
 						withSonarQubeEnv{
 						    bat "\"${scannerHome}\"\\bin\\sonar-scanner "+
 							"-Dsonar.projectKey=TestAccelerator "+
